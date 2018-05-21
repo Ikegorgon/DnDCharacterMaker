@@ -30,6 +30,9 @@ public class Frame extends JFrame {
 //		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass()
 //				.getResource("charactermaker/view/images/Icon.png")));
 	}
+	public void changePanel() {
+		this.setContentPane(panel2);
+	}
 	public Controller getController() {
 		return app;
 	}
