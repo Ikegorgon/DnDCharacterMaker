@@ -4,11 +4,9 @@ package charactermaker.controller;
  * 		http://gdnd.wikidot.com/
  */
 import charactermaker.view.*;
-import charactermaker.model.*;
 import charactermaker.model.classes.*;
 import charactermaker.model.races.*;
 import charactermaker.model.backgrounds.*;
-import charactermaker.model.features.*;
 import charactermaker.model.features.feats.general.*;
 import charactermaker.model.items.*;
 import charactermaker.model.spells.*;
@@ -61,9 +59,55 @@ public class Controller {
 		races.add(new YuanTiPureblood());
 		backgrounds = new ArrayList<Backgrounds>();
 		backgrounds.add(new Acolyte());
+		backgrounds.add(new Anthropologist());
+		backgrounds.add(new Archaeologist());
+		backgrounds.add(new BlackFistDoubleAgent());
+		backgrounds.add(new CaravanSpecialist());
+		backgrounds.add(new Charlatan());
+		backgrounds.add(new CityWatch());
+		backgrounds.add(new ClanCrafter());
+		backgrounds.add(new CloisteredScholar());
+		backgrounds.add(new CormanthorRefugee());
+		backgrounds.add(new Courtier());
+		backgrounds.add(new Criminal());
+		backgrounds.add(new Dissenter());
+		backgrounds.add(new DragonCasualty());
+		backgrounds.add(new EarthspurMiner());
+		backgrounds.add(new Entertainer());
+		backgrounds.add(new FactionAgent());
+		backgrounds.add(new FarTraveler());
+		backgrounds.add(new FolkHero());
+		backgrounds.add(new GateUrchin());
+		backgrounds.add(new Gladiator());
+		backgrounds.add(new GuildArtisan());
+		backgrounds.add(new GuildMerchant());
+		backgrounds.add(new Harborfolk());
+		backgrounds.add(new HauntedOne());
+		backgrounds.add(new Heretic());
+		backgrounds.add(new Hermit());
+		backgrounds.add(new HillsfarMerchant());
+		backgrounds.add(new HillsfarSmuggler());
+		backgrounds.add(new Inheritor());
+		backgrounds.add(new Initiate());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		backgrounds.add(new ());
+		
+		frame = new Frame(this);
 	}
 	public void start() {
-		frame = new Frame(this);
+		
 	}
 	public String [] convertClasses() {
 		String [] classTypes = new String [classes.size()];

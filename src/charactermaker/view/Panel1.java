@@ -137,7 +137,8 @@ public class Panel1 extends JPanel {
 	private void setupListeners() {
 		create.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				
+				frame = app.getFrame();
+				frame.changePanel();
 			}
 		});
 	}

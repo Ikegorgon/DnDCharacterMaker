@@ -9,14 +9,10 @@ public class Frame extends JFrame {
 	private Controller app;
 	private Panel1 panel1;
 	private Panel2 panel2;
-	public Frame() {
-		
-	}
 	public Frame(Controller app) {
 		super();
 		this.app = app;
 		panel1 = new Panel1(app);
-		panel2 = new Panel2(app);
 		setupFrame();
 	}
 	private void setupFrame() {
@@ -31,7 +27,9 @@ public class Frame extends JFrame {
 //				.getResource("charactermaker/view/images/Icon.png")));
 	}
 	public void changePanel() {
+		panel2 = new Panel2(app);
 		this.setContentPane(panel2);
+		this.revalidate();
 	}
 	public Controller getController() {
 		return app;
