@@ -65,9 +65,7 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, characterNameLabel, 10, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.SOUTH, characterNameLabel, 40, SpringLayout.SOUTH, name);
 		layout.putConstraint(SpringLayout.EAST, characterNameLabel, 110, SpringLayout.WEST, this);
-//		characterName = panel1.getCharacterName();
 //		characterName = new JTextField(panel1.getCharacterName().getText());
-//		characterName.setText(panel1.getCharacterName().getText());
 		characterName.setHorizontalAlignment(SwingConstants.TRAILING);
 		layout.putConstraint(SpringLayout.NORTH, characterName, 0, SpringLayout.NORTH, characterNameLabel);
 		layout.putConstraint(SpringLayout.WEST, characterName, 10, SpringLayout.EAST, characterNameLabel);
