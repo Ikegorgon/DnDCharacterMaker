@@ -44,7 +44,8 @@ public class Panel2 extends JPanel {
 	public Panel2(Controller app) {
 		super();
 		this.app = app;
-		panel1 = new Panel1(app);
+		frame = app.getFrame();
+		panel1 = frame.getPanel1();
 		layout = new SpringLayout();
 		name = new JLabel("Character Creator");
 		name.setToolTipText("Create a new Character for Dungeons and Dragons!");
@@ -65,7 +66,7 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, characterNameLabel, 10, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.SOUTH, characterNameLabel, 40, SpringLayout.SOUTH, name);
 		layout.putConstraint(SpringLayout.EAST, characterNameLabel, 110, SpringLayout.WEST, this);
-//		characterName = new JTextField(panel1.getCharacterName().getText());
+		characterName = new JTextField(panel1.getCharacterName().getText());
 		characterName.setHorizontalAlignment(SwingConstants.TRAILING);
 		layout.putConstraint(SpringLayout.NORTH, characterName, 0, SpringLayout.NORTH, characterNameLabel);
 		layout.putConstraint(SpringLayout.WEST, characterName, 10, SpringLayout.EAST, characterNameLabel);
@@ -79,7 +80,7 @@ public class Panel2 extends JPanel {
 		classesLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		layout.putConstraint(SpringLayout.WEST, classesLabel, 0, SpringLayout.WEST, characterNameLabel);
 		layout.putConstraint(SpringLayout.EAST, classesLabel, 0, SpringLayout.EAST, characterNameLabel);
-		classes = new JComboBox();
+		classes = panel1.getClassList();
 		layout.putConstraint(SpringLayout.NORTH, classes, 0, SpringLayout.NORTH, classesLabel);
 		layout.putConstraint(SpringLayout.WEST, classes, 0, SpringLayout.WEST, characterName);
 		layout.putConstraint(SpringLayout.SOUTH, classes, 0, SpringLayout.SOUTH, classesLabel);
