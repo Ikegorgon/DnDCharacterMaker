@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Aasimar extends Races{
 	private List<Skills> ability;
-//	private List<Features> feats;
+	private List<RacialFeats> feats;
 	private List<String> languages;
 	private Charisma charisma;
 	public Aasimar() {
@@ -16,7 +16,7 @@ public class Aasimar extends Races{
 	private void setup() {
 		ability = new ArrayList<Skills>();
 		ability.add(charisma);
-//		feats = new ArrayList<Features>();
+		feats = new ArrayList<RacialFeats>();
 		languages = new ArrayList<String>();
 		languages.add("Common");
 		languages.add("Celestial");
