@@ -4,13 +4,13 @@ import java.util.*;
 import charactermaker.model.features.skills.*;
 import charactermaker.model.features.feats.racialfeat.*;
 
-public class Dwarf extends Races{
+public class Dwarf_Hill extends Races{
 	private List<Skills> ability;
 	private List<RacialFeats> feats;
 	private List<String> proficiency;
 	private int mod;
-	public Dwarf() {
-		super("Dwarf");
+	public Dwarf_Hill() {
+		super("Hill Dwarf");
 		this.setAge(Age());
 		this.setHeight(Height());
 		this.setWeight(Weight());
@@ -18,11 +18,13 @@ public class Dwarf extends Races{
 		ability = new ArrayList<Skills>();
 		ability.add(new Constitution());
 		ability.add(new Constitution());
+		ability.add(new Wisdom());
 		feats = new ArrayList<RacialFeats>();
 		feats.add(new Darkvision());
 		feats.add(new DwarvenResilience());
 		feats.add(new DwarvenCombatTraining());
 		feats.add(new Stonecunning());
+		feats.add(new DwarvenToughness());
 		proficiency = new ArrayList<String>();
 		proficiency.add("Common");
 		proficiency.add("Dwarvish");
@@ -43,7 +45,7 @@ public class Dwarf extends Races{
 	private String Height() {
 		String height = "";
 		Random rand = new Random();
-		int base = 45;
+		int base = 44;
 		int add1 = rand.nextInt(4 + 1) + 1;
 		int add2 = rand.nextInt(4 + 1) + 1;
 		mod = add1 + add2;
@@ -56,7 +58,7 @@ public class Dwarf extends Races{
 	private String Weight() {
 		String weight = "";
 		Random rand = new Random();
-		int base = 120;
+		int base = 115;
 		int add1 = rand.nextInt(6 + 1) + 1;
 		int add2 = rand.nextInt(6 + 1) + 1;
 		mod = mod * (add1 + add2);

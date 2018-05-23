@@ -53,6 +53,7 @@ public class Panel1 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, character, 0, SpringLayout.WEST, name);
 		layout.putConstraint(SpringLayout.EAST, character, 100, SpringLayout.WEST, name);
 		characterName = new JTextField();
+		characterName.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, characterName, 0, SpringLayout.NORTH, character);
 		layout.putConstraint(SpringLayout.WEST, characterName, 5, SpringLayout.EAST, character);
 		layout.putConstraint(SpringLayout.SOUTH, characterName, 0, SpringLayout.SOUTH, character);
@@ -62,7 +63,7 @@ public class Panel1 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, classes, 0, SpringLayout.WEST, name);
 		layout.putConstraint(SpringLayout.SOUTH, classes, 35, SpringLayout.SOUTH, character);
 		layout.putConstraint(SpringLayout.EAST, classes, 100, SpringLayout.WEST, name);
-		classes.setToolTipText("Pick a Class for your Character.");
+		classes.setToolTipText("Choose a Class for your Character.");
 		classes.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		classes.setOpaque(true);
 		classes.setBackground(Color.WHITE);
@@ -73,6 +74,7 @@ public class Panel1 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, classList, 0, SpringLayout.SOUTH, classes);
 		layout.putConstraint(SpringLayout.EAST, classList, 0, SpringLayout.EAST, characterName);
 		archetype = new JLabel("Archetype");
+		archetype.setToolTipText("Choose an Archetype for your Character based off your Class.");
 		archetype.setOpaque(true);
 		archetype.setBackground(Color.WHITE);
 		archetype.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -91,7 +93,7 @@ public class Panel1 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, races, 0, SpringLayout.WEST, archetype);
 		layout.putConstraint(SpringLayout.SOUTH, races, 35, SpringLayout.SOUTH, archetype);
 		layout.putConstraint(SpringLayout.EAST, races, 0, SpringLayout.EAST, archetype);
-		races.setToolTipText("Pick a Race for your Character.");
+		races.setToolTipText("Choose a Race for your Character.");
 		races.setOpaque(true);
 		races.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		races.setBackground(Color.WHITE);
@@ -109,7 +111,7 @@ public class Panel1 extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, backgrounds, 0, SpringLayout.EAST, races);
 		backgrounds.setBackground(Color.WHITE);
 		backgrounds.setOpaque(true);
-		backgrounds.setToolTipText("Pick a Background for your Character.");
+		backgrounds.setToolTipText("Choose a Background for your Character.");
 		backgrounds.setHorizontalAlignment(SwingConstants.CENTER);
 		backgroundList = new JComboBox();
 		layout.putConstraint(SpringLayout.NORTH, backgroundList, 0, SpringLayout.NORTH, backgrounds);
@@ -117,6 +119,7 @@ public class Panel1 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, backgroundList, 0, SpringLayout.SOUTH, backgrounds);
 		layout.putConstraint(SpringLayout.EAST, backgroundList, 0, SpringLayout.EAST, raceList);
 		alignment = new JLabel("Alignment");
+		alignment.setToolTipText("Choose an Alignment for your Character.");
 		alignment.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		alignment.setOpaque(true);
 		alignment.setHorizontalAlignment(SwingConstants.CENTER);
@@ -131,6 +134,7 @@ public class Panel1 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, alignmentList, 0, SpringLayout.SOUTH, alignment);
 		layout.putConstraint(SpringLayout.EAST, alignmentList, 0, SpringLayout.EAST, backgroundList);
 		create = new JButton("Create");
+		create.setToolTipText("Click to create your Character.");
 		layout.putConstraint(SpringLayout.NORTH, create, 5, SpringLayout.SOUTH, alignment);
 		layout.putConstraint(SpringLayout.WEST, create, 50, SpringLayout.WEST, alignment);
 		layout.putConstraint(SpringLayout.SOUTH, create, 35, SpringLayout.SOUTH, alignment);

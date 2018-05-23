@@ -15,7 +15,7 @@ import java.util.*;
 public class Controller {
 	private Frame frame;
 	private List<Classes> classes;
-	private List<Classes> archetype;
+	private List<String> archetype;
 	private List<Races> races;
 	private List<Backgrounds> backgrounds;
 	private List<String> alignments;
@@ -35,13 +35,14 @@ public class Controller {
 		classes.add(new Sorcerer());
 		classes.add(new Warlock());
 		classes.add(new Wizard());
-		archetype = new ArrayList<Classes>();
-		archetype.add(new Barbarian());
+		archetype = new ArrayList<String>();
+//		archetype.add(new Barbarian().getArchetypes().get(0));
+//		archetype.add(new Barbarian().getArchetypes().get(1));
 		races = new ArrayList<Races>();
 //		races.add(new Aasimar());
 //		races.add(new Bugbear());
 		races.add(new Dragonborn());
-		races.add(new Dwarf());
+		races.add(new Dwarf_Hill());
 		races.add(new Elf());
 //		races.add(new Firbolg());
 //		races.add(new Genasi());
@@ -143,9 +144,9 @@ public class Controller {
 		return classTypes;
 	}
 	public String [] convertArchytype() {
-		String [] archetypeTypes = new String [classes.size()];
+		String [] archetypeTypes = new String [archetype.size()];
 		for (int i = 0; i < archetype.size(); i++) {
-			archetypeTypes[i] = archetype.get(i).getName();
+			archetypeTypes[i] = archetype.get(i);
 		}
 		return archetypeTypes;
 	}
@@ -173,4 +174,20 @@ public class Controller {
 	public Frame getFrame() {
 		return frame;
 	}
+	public List<Classes> getClasses() {
+		return classes;
+	}
+	public List<String> getArchetype() {
+		return archetype;
+	}
+	public List<Races> getRaces() {
+		return races;
+	}
+	public List<Backgrounds> getBackgrounds() {
+		return backgrounds;
+	}
+	public List<String> getAlignments() {
+		return alignments;
+	}
+	
 }

@@ -18,7 +18,7 @@ public class Frame extends JFrame {
 	private void setupFrame() {
 		this.setContentPane(panel1);
 		this.setTitle("D&D Character Creator");
-		this.setSize(750, 750);
+		this.setSize(750, 800);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -28,7 +28,11 @@ public class Frame extends JFrame {
 	}
 	public void changePanel() {
 		panel2 = new Panel2(app);
-		this.setContentPane(panel2);
+		if (this.getContentPane() == panel1) {
+			this.setContentPane(panel2);
+		} else {
+			this.setContentPane(panel1);
+		}
 		this.revalidate();
 	}
 	public Controller getController() {
