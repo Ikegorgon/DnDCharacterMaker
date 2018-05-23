@@ -43,7 +43,7 @@ public class Controller {
 //		races.add(new Bugbear());
 		races.add(new Dragonborn());
 		races.add(new Dwarf_Hill());
-		races.add(new Elf());
+		//races.add(new Elf());
 //		races.add(new Firbolg());
 //		races.add(new Genasi());
 		races.add(new Gnome());
