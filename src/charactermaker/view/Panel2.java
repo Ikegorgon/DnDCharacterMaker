@@ -69,6 +69,8 @@ public class Panel2 extends JPanel {
 	private JButton spells;
 	private JButton newCharacter;
 	
+	private boolean update;
+	
 	public Panel2(Controller app) {
 		super();
 		this.app = app;
@@ -411,6 +413,7 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, newCharacter, 0, SpringLayout.SOUTH, spells);
 		layout.putConstraint(SpringLayout.EAST, newCharacter, 145, SpringLayout.EAST, spells);
 		
+		update = true;
 		
 		setupPanel();
 		setupComboBox();
@@ -495,8 +498,19 @@ public class Panel2 extends JPanel {
 		races.setSelectedIndex(panel1.getRaceList().getSelectedIndex());
 		alignment.setSelectedIndex(panel1.getAlignmentList().getSelectedIndex());
 		speed.setText(app.getRaces().get(races.getSelectedIndex()).getSpeed() + " Feet");
+		
+		
+		hitDice.setText(app.getRaces().get(races.getSelectedIndex()).getAge() + " Years Old");
+		proficiency.setText(app.getRaces().get(races.getSelectedIndex()).getHeight());
+		passiveWisdom.setText(app.getRaces().get(races.getSelectedIndex()).getWeight());
 	}
 	private void setupListeners() {
+		races.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel1.getRaceList().setSelectedIndex(races.getSelectedIndex());
+				setupContent();
+			}
+		});
 		stats.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
 				

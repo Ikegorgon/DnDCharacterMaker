@@ -14,6 +14,7 @@ public abstract class Races {
 	private List<Skills> ability;
 	private List<RacialFeats> feats;
 	private List<String> proficiency;
+	private String book;
 	public Races() {
 		
 	}
@@ -24,6 +25,7 @@ public abstract class Races {
 		this.weight = "";
 		this.speed = 0;
 		this.description = "";
+		this.book = "";
 	}
 	public String getName() {
 		return name;
@@ -78,5 +80,11 @@ public abstract class Races {
 	}
 	public void setWeight(String weight) {
 		this.weight = weight;
+	}
+	public String getBook() {
+		return book;
+	}
+	public void setBook(String book) {
+		this.book = book;
 	}
 }

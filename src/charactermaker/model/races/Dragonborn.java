@@ -48,7 +48,7 @@ public class Dragonborn extends Races{
 		int total = base + mod;
 		int feet = ((int) total / 12);
 		int inches =  total - (((int) total / 12) * 12);
-		height = feet + "'" + inches + "\"";
+		height = feet + " Foot " + inches + " Inch";
 		return height;
 	}
 	private String Weight() {
@@ -59,7 +59,7 @@ public class Dragonborn extends Races{
 		int add2 = rand.nextInt(6 + 1) + 1;
 		mod = mod * (add1 + add2);
 		int total = base + mod;
-		weight = total + "lbs";
+		weight = total + " Pounds";
 		return weight;
 	}
 }
