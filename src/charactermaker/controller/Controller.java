@@ -2,6 +2,8 @@ package charactermaker.controller;
 /*
  * Based off Info from "GIGER'S 5E D&D WIKI!"
  * 		http://gdnd.wikidot.com/
+ * 
+ * 		https://docs.google.com/spreadsheets/d/1fjnoCiYUCOcrMxffWNwppHfuUDlY1Ae0HQ4t-XCaiPA/edit#gid=0
  */
 import charactermaker.view.*;
 import charactermaker.model.classes.*;
