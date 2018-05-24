@@ -4,40 +4,40 @@ import java.util.*;
 import charactermaker.model.features.skills.*;
 import charactermaker.model.features.feats.racialfeat.*;
 
-public class Firbolg extends Races{
+public class Aasimar_Fallen extends Races{
 	private List<Skills> ability;
 	private List<RacialFeats> feats;
 	private List<String> proficiency;
 	private int mod;
-	public Firbolg() {
-		super("Firbolg");
+	public Aasimar_Fallen() {
+		super("Fallen Aasimar");
 		this.setAge(Age());
 		this.setHeight(Height());
 		this.setWeight(Weight());
 		this.setSpeed(30);
 		ability = new ArrayList<Skills>();
-		ability.add(new Wisdom());
-		ability.add(new Wisdom());
+		ability.add(new Charisma());
+		ability.add(new Charisma());
 		ability.add(new Strength());
 		feats = new ArrayList<RacialFeats>();
-		feats.add(new FirbolgMagic());
-		feats.add(new HiddenStep());
-		feats.add(new PowerfulBuild());
-		feats.add(new SpeechOfBeastAndLeaf());
+		feats.add(new Darkvision());
+		feats.add(new CelestialResistance());
+		feats.add(new HealingHands());
+		feats.add(new LightBearer());
+		feats.add(new NecroticShroud());
 		proficiency = new ArrayList<String>();
 		proficiency.add("Common");
-		proficiency.add("Elvish");
-		proficiency.add("Giant");
+		proficiency.add("Celestial");
 		this.setAbility(ability);
 		this.setFeats(feats);
 		this.setProficiency(proficiency);
-		this.setDescription("Firbolgs are a reclusive race of giant-kin who preferred to avoid contact with other sentient races. They were both the most intelligent and the most powerful of the giant-kin.");
-		this.setBook("Volo's 106");
+		this.setDescription("An aasimar who was touched by dark powers as a youth or who turns to evil in early adulthood can become one of the fallen-a group of aasimar whose inner light has been replaced by shadow.");
+		this.setBook("Volo's 105");
 	}
 	private int Age() {
 		int age = 0;
-		int min = 30;
-		int max = 500;
+		int min = 20;
+		int max = 160;
 		Random rand = new Random();
 		age = rand.nextInt(max - min) + min;
 		return age;
@@ -45,7 +45,7 @@ public class Firbolg extends Races{
 	private String Height() {
 		String height = "";
 		Random rand = new Random();
-		int base = 70;
+		int base = 61;
 		int add1 = rand.nextInt(8 + 1) + 1;
 		int add2 = rand.nextInt(8 + 1) + 1;
 		mod = add1 + add2;
@@ -57,12 +57,8 @@ public class Firbolg extends Races{
 	}
 	private String Weight() {
 		String weight = "";
-		Random rand = new Random();
-		int base = 190;
-		int add1 = rand.nextInt(6 + 1) + 1;
-		int add2 = rand.nextInt(6 + 1) + 1;
-		mod = mod * (add1 + add2);
-		int total = base + mod;
+		int base = 100;
+		int total = base + (mod * 5);
 		weight = total + " Pounds";
 		return weight;
 	}

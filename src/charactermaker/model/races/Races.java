@@ -1,28 +1,32 @@
 package charactermaker.model.races;
 
-import charactermaker.model.features.feats.*;
+import charactermaker.model.features.feats.racialfeat.*;
 import charactermaker.model.features.skills.*;
 import java.util.*;
 
 public abstract class Races {
 	private String name;
 	private String description;
-	private List<Skills> ability;
 	private int age;
-	private String alignment;
-	private String size;
+	private String height;
+	private String weight;
 	private int speed;
-	private boolean darkVision;
-	private int darkVisionDistance;
-//	private List<Features> feats;
-	private List<String> languages;
+	private List<Skills> ability;
+	private List<RacialFeats> feats;
+	private List<String> proficiency;
+	private String book;
 	public Races() {
 		
 	}
 	public Races(String name) {
 		this.name = name;
+		this.age = 0;
+		this.height = "";
+		this.weight = "";
+		this.speed = 0;
+		this.description = "";
+		this.book = "";
 	}
-	
 	public String getName() {
 		return name;
 	}
@@ -47,17 +51,11 @@ public abstract class Races {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getAlignment() {
-		return alignment;
+	public String getHeight() {
+		return height;
 	}
-	public void setAlignment(String alignment) {
-		this.alignment = alignment;
-	}
-	public String getSize() {
-		return size;
-	}
-	public void setSize(String size) {
-		this.size = size;
+	public void setHeight(String size) {
+		this.height = size;
 	}
 	public int getSpeed() {
 		return speed;
@@ -65,28 +63,28 @@ public abstract class Races {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	public boolean isDarkVision() {
-		return darkVision;
+	public List<RacialFeats> getFeats() {
+		return feats;
 	}
-	public void setDarkVision(boolean darkVision) {
-		this.darkVision = darkVision;
+	public void setFeats(List<RacialFeats> feats) {
+		this.feats = feats;
 	}
-	public int getDarkVisionDistance() {
-		return darkVisionDistance;
+	public List<String> getProficiency() {
+		return proficiency;
 	}
-	public void setDarkVisionDistance(int darkVisionDistance) {
-		this.darkVisionDistance = darkVisionDistance;
+	public void setProficiency(List<String> proficiency) {
+		this.proficiency = proficiency;
 	}
-//	public List<Features> getFeats() {
-//		return feats;
-//	}
-//	public void setFeats(List<Features> feats) {
-//		this.feats = feats;
-//	}
-	public List<String> getLanguages() {
-		return languages;
+	public String getWeight() {
+		return weight;
 	}
-	public void setLanguages(List<String> languages) {
-		this.languages = languages;
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+	public String getBook() {
+		return book;
+	}
+	public void setBook(String book) {
+		this.book = book;
 	}
 }
