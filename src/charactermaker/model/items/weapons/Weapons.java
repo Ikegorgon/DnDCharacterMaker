@@ -1,6 +1,8 @@
 package charactermaker.model.items.weapons;
 
-public abstract class Weapons {
+import charactermaker.model.items.*;
+
+public abstract class Weapons extends Items {
 	private String name;
 	private String cost;
 	private String damage;

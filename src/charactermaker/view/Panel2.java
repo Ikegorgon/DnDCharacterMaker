@@ -59,17 +59,28 @@ public class Panel2 extends JPanel {
 	private JCheckBox inspiration;
 	private JLabel proficiencyLabel;
 	private JTextField proficiency;
-	
 	private JLabel passiveWisdomLabel;
 	private JTextField passiveWisdom;
+	
+	private JLabel descriptionLabel;
+	private JScrollPane descriptionArea;
+	private static JTextArea description;
+	private JLabel heightLabel;
+	private JTextField height;
+	private JLabel weightLabel;
+	private JTextField weight;
+	private JLabel ageLabel;
+	private JTextField age;
+	private JLabel bookLabel;
+	private JTextField book;
+	
+	
 	
 	private JButton stats;
 	private JButton info;
 	private JButton feats;
 	private JButton spells;
 	private JButton newCharacter;
-	
-	private boolean update;
 	
 	public Panel2(Controller app) {
 		super();
@@ -359,8 +370,6 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, proficiency, 0, SpringLayout.WEST, hitDice);
 		layout.putConstraint(SpringLayout.SOUTH, proficiency, 0, SpringLayout.SOUTH, proficiencyLabel);
 		layout.putConstraint(SpringLayout.EAST, proficiency, 0, SpringLayout.EAST, hitDice);
-		
-		
 		passiveWisdomLabel = new JLabel("Passive Wis");
 		passiveWisdomLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		passiveWisdomLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -375,6 +384,79 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, passiveWisdom, 0, SpringLayout.WEST, proficiency);
 		layout.putConstraint(SpringLayout.SOUTH, passiveWisdom, 0, SpringLayout.SOUTH, passiveWisdomLabel);
 		layout.putConstraint(SpringLayout.EAST, passiveWisdom, 0, SpringLayout.EAST, proficiency);
+		
+		descriptionLabel = new JLabel("Description");
+		descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		descriptionLabel.setOpaque(true);
+		descriptionLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		layout.putConstraint(SpringLayout.NORTH, descriptionLabel, 10, SpringLayout.NORTH, holder);
+		layout.putConstraint(SpringLayout.WEST, descriptionLabel, 10, SpringLayout.WEST, holder);
+		layout.putConstraint(SpringLayout.SOUTH, descriptionLabel, 40, SpringLayout.NORTH, holder);
+		layout.putConstraint(SpringLayout.EAST, descriptionLabel, 310, SpringLayout.WEST, holder);
+		descriptionArea = new JScrollPane();
+		layout.putConstraint(SpringLayout.NORTH, descriptionArea, 10, SpringLayout.SOUTH, descriptionLabel);
+		layout.putConstraint(SpringLayout.WEST, descriptionArea, 0, SpringLayout.WEST, descriptionLabel);
+		layout.putConstraint(SpringLayout.SOUTH, descriptionArea, -10, SpringLayout.SOUTH, holder);
+		layout.putConstraint(SpringLayout.EAST, descriptionArea, 0, SpringLayout.EAST, descriptionLabel);
+		description = new JTextArea();
+		descriptionArea.setViewportView(description);
+		descriptionArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		descriptionArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		descriptionArea.setBackground(Color.LIGHT_GRAY);
+		description.setWrapStyleWord(true);
+		description.setLineWrap(true);
+		heightLabel = new JLabel("Height");
+		heightLabel.setOpaque(true);
+		heightLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		heightLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		height = new JTextField();
+		layout.putConstraint(SpringLayout.NORTH, heightLabel, 0, SpringLayout.NORTH, height);
+		layout.putConstraint(SpringLayout.WEST, heightLabel, -110, SpringLayout.WEST, height);
+		layout.putConstraint(SpringLayout.SOUTH, heightLabel, 0, SpringLayout.SOUTH, height);
+		layout.putConstraint(SpringLayout.EAST, heightLabel, -10, SpringLayout.WEST, height);
+		layout.putConstraint(SpringLayout.NORTH, height, 10, SpringLayout.NORTH, holder);
+		layout.putConstraint(SpringLayout.WEST, height, -160, SpringLayout.EAST, holder);
+		layout.putConstraint(SpringLayout.SOUTH, height, 40, SpringLayout.NORTH, holder);
+		layout.putConstraint(SpringLayout.EAST, height, -10, SpringLayout.EAST, holder);
+		weightLabel = new JLabel("Weight");
+		layout.putConstraint(SpringLayout.NORTH, weightLabel, 10, SpringLayout.SOUTH, heightLabel);
+		layout.putConstraint(SpringLayout.WEST, weightLabel, 0, SpringLayout.WEST, heightLabel);
+		layout.putConstraint(SpringLayout.SOUTH, weightLabel, 40, SpringLayout.SOUTH, heightLabel);
+		layout.putConstraint(SpringLayout.EAST, weightLabel, 0, SpringLayout.EAST, heightLabel);
+		weightLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		weightLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		weightLabel.setOpaque(true);
+		weight = new JTextField();
+		layout.putConstraint(SpringLayout.NORTH, weight, 0, SpringLayout.NORTH, weightLabel);
+		layout.putConstraint(SpringLayout.WEST, weight, 0, SpringLayout.WEST, height);
+		layout.putConstraint(SpringLayout.SOUTH, weight, 0, SpringLayout.SOUTH, weightLabel);
+		layout.putConstraint(SpringLayout.EAST, weight, 0, SpringLayout.EAST, height);
+		ageLabel = new JLabel("Age");
+		layout.putConstraint(SpringLayout.NORTH, ageLabel, 10, SpringLayout.SOUTH, weightLabel);
+		layout.putConstraint(SpringLayout.WEST, ageLabel, 0, SpringLayout.WEST, weightLabel);
+		layout.putConstraint(SpringLayout.SOUTH, ageLabel, 40, SpringLayout.SOUTH, weightLabel);
+		layout.putConstraint(SpringLayout.EAST, ageLabel, 0, SpringLayout.EAST, weightLabel);
+		ageLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		ageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		ageLabel.setOpaque(true);
+		age = new JTextField();
+		layout.putConstraint(SpringLayout.NORTH, age, 0, SpringLayout.NORTH, ageLabel);
+		layout.putConstraint(SpringLayout.WEST, age, 0, SpringLayout.WEST, weight);
+		layout.putConstraint(SpringLayout.SOUTH, age, 0, SpringLayout.SOUTH, ageLabel);
+		layout.putConstraint(SpringLayout.EAST, age, 0, SpringLayout.EAST, weight);
+		bookLabel = new JLabel("Book");
+		layout.putConstraint(SpringLayout.NORTH, bookLabel, 10, SpringLayout.SOUTH, ageLabel);
+		layout.putConstraint(SpringLayout.WEST, bookLabel, 0, SpringLayout.WEST, ageLabel);
+		layout.putConstraint(SpringLayout.SOUTH, bookLabel, 40, SpringLayout.SOUTH, ageLabel);
+		layout.putConstraint(SpringLayout.EAST, bookLabel, 0, SpringLayout.EAST, ageLabel);
+		bookLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		bookLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		bookLabel.setOpaque(true);
+		book = new JTextField();
+		layout.putConstraint(SpringLayout.NORTH, book, 0, SpringLayout.NORTH, bookLabel);
+		layout.putConstraint(SpringLayout.WEST, book, 0, SpringLayout.WEST, age);
+		layout.putConstraint(SpringLayout.SOUTH, book, 0, SpringLayout.SOUTH, bookLabel);
+		layout.putConstraint(SpringLayout.EAST, book, 0, SpringLayout.EAST, age);
 		
 		stats = new JButton("Stats");
 		layout.putConstraint(SpringLayout.NORTH, stats, -60, SpringLayout.SOUTH, this);
@@ -412,8 +494,6 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.WEST, newCharacter, 10, SpringLayout.EAST, spells);
 		layout.putConstraint(SpringLayout.SOUTH, newCharacter, 0, SpringLayout.SOUTH, spells);
 		layout.putConstraint(SpringLayout.EAST, newCharacter, 145, SpringLayout.EAST, spells);
-		
-		update = true;
 		
 		setupPanel();
 		setupComboBox();
@@ -472,8 +552,21 @@ public class Panel2 extends JPanel {
 		this.add(feats);
 		this.add(spells);
 		this.add(newCharacter);
+		this.add(descriptionLabel);
+		this.add(descriptionArea);
+		this.add(heightLabel);
+		this.add(height);
+		this.add(weightLabel);
+		this.add(weight);
+		this.add(ageLabel);
+		this.add(age);
+		this.add(bookLabel);
+		this.add(book);
 		
 		this.add(holder);
+		
+		deactivate();
+		activateStats();
 	}
 	private void setupComboBox() {
 		DefaultComboBoxModel classModel = new DefaultComboBoxModel(app.convertClasses());
@@ -499,10 +592,129 @@ public class Panel2 extends JPanel {
 		alignment.setSelectedIndex(panel1.getAlignmentList().getSelectedIndex());
 		speed.setText(app.getRaces().get(races.getSelectedIndex()).getSpeed() + " Feet");
 		
+		description.append(app.getRaces().get(races.getSelectedIndex()).getDescription());
+		age.setText(app.getRaces().get(races.getSelectedIndex()).getAge() + " Years Old");
+		height.setText(app.getRaces().get(races.getSelectedIndex()).getHeight());
+		weight.setText(app.getRaces().get(races.getSelectedIndex()).getWeight());
+		book.setText(app.getRaces().get(races.getSelectedIndex()).getBook());
+	}
+	private void deactivate() {
+		characterNameLabel.setVisible(false);
+		characterName.setVisible(false);
+		classesLabel.setVisible(false);
+		classes.setVisible(false);
+		archetypesLabel.setVisible(false);
+		archetypes.setVisible(false);
+		levelLabel.setVisible(false);
+		level.setVisible(false);
+		backgroundsLabel.setVisible(false);
+		backgrounds.setVisible(false);
+		racesLabel.setVisible(false);
+		races.setVisible(false);
+		alignmentLabel.setVisible(false);
+		alignment.setVisible(false);
+		xpLabel.setVisible(false);
+		xp.setVisible(false);
+		acLabel.setVisible(false);
+		ac.setVisible(false);
+		initiativeLabel.setVisible(false);
+		initiative.setVisible(false);
+		speedLabel.setVisible(false);
+		speed.setVisible(false);
+		hpLabel.setVisible(false);
+		hpAmount.setVisible(false);
+		hp.setVisible(false);
+		hitDiceLabel.setVisible(false);
+		hitDice.setVisible(false);
+		deathSavesLabel.setVisible(false);
+		success.setVisible(false);
+		failure.setVisible(false);
+		success1.setVisible(false);
+		success2.setVisible(false);
+		success3.setVisible(false);
+		failure1.setVisible(false);
+		failure2.setVisible(false);
+		failure3.setVisible(false);
+		inspirationLabel.setVisible(false);
+		inspiration.setVisible(false);
+		proficiencyLabel.setVisible(false);
+		proficiency.setVisible(false);
+		passiveWisdomLabel.setVisible(false);
+		passiveWisdom.setVisible(false);
+		descriptionLabel.setVisible(false);
+		descriptionArea.setVisible(false);
+		description.setVisible(false);
+		heightLabel.setVisible(false);
+		height.setVisible(false);
+		weightLabel.setVisible(false);
+		weight.setVisible(false);
+		ageLabel.setVisible(false);
+		age.setVisible(false);
+		bookLabel.setVisible(false);
+		book.setVisible(false);
+	}
+	private void activateStats() {
+		characterNameLabel.setVisible(true);
+		characterName.setVisible(true);
+		classesLabel.setVisible(true);
+		classes.setVisible(true);
+		archetypesLabel.setVisible(true);
+		archetypes.setVisible(true);
+		levelLabel.setVisible(true);
+		level.setVisible(true);
+		backgroundsLabel.setVisible(true);
+		backgrounds.setVisible(true);
+		racesLabel.setVisible(true);
+		races.setVisible(true);
+		alignmentLabel.setVisible(true);
+		alignment.setVisible(true);
+		xpLabel.setVisible(true);
+		xp.setVisible(true);
+		acLabel.setVisible(true);
+		ac.setVisible(true);
+		initiativeLabel.setVisible(true);
+		initiative.setVisible(true);
+		speedLabel.setVisible(true);
+		speed.setVisible(true);
+		hpLabel.setVisible(true);
+		hpAmount.setVisible(true);
+		hp.setVisible(true);
+		hitDiceLabel.setVisible(true);
+		hitDice.setVisible(true);
+		deathSavesLabel.setVisible(true);
+		success.setVisible(true);
+		failure.setVisible(true);
+		success1.setVisible(true);
+		success2.setVisible(true);
+		success3.setVisible(true);
+		failure1.setVisible(true);
+		failure2.setVisible(true);
+		failure3.setVisible(true);
+		inspirationLabel.setVisible(true);
+		inspiration.setVisible(true);
+		proficiencyLabel.setVisible(true);
+		proficiency.setVisible(true);
+		passiveWisdomLabel.setVisible(true);
+		passiveWisdom.setVisible(true);
+	}
+	private void activateInfo() {
+		descriptionLabel.setVisible(true);
+		descriptionArea.setVisible(true);
+		description.setVisible(true);
+		heightLabel.setVisible(true);
+		height.setVisible(true);
+		weightLabel.setVisible(true);
+		weight.setVisible(true);
+		ageLabel.setVisible(true);
+		age.setVisible(true);
+		bookLabel.setVisible(true);
+		book.setVisible(true);
+	}
+	private void activateFeats() {
 		
-		hitDice.setText(app.getRaces().get(races.getSelectedIndex()).getAge() + " Years Old");
-		proficiency.setText(app.getRaces().get(races.getSelectedIndex()).getHeight());
-		passiveWisdom.setText(app.getRaces().get(races.getSelectedIndex()).getWeight());
+	}
+	private void activateSpells() {
+		
 	}
 	private void setupListeners() {
 		races.addActionListener(new ActionListener() {
@@ -513,26 +725,31 @@ public class Panel2 extends JPanel {
 		});
 		stats.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				
+				deactivate();
+				activateStats();
 			}
 		});
 		info.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				
+				deactivate();
+				activateInfo();
 			}
 		});
 		feats.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				
+				deactivate();
+				activateFeats();
 			}
 		});
 		spells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
-				
+				deactivate();
+				activateSpells();
 			}
 		});
 		newCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent click) {
+				app.setupList();
 				frame.changePanel();
 			}
 		});

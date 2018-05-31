@@ -19,7 +19,6 @@ public class HalfOrc extends Races{
 		ability.add(new Strength());
 		ability.add(new Strength());
 		ability.add(new Constitution());
-		ability.add(new Intimidation());
 		feats = new ArrayList<RacialFeats>();
 		feats.add(new Darkvision());
 		feats.add(new Menacing());
@@ -31,7 +30,8 @@ public class HalfOrc extends Races{
 		this.setAbility(ability);
 		this.setFeats(feats);
 		this.setProficiency(proficiency);
-		this.setDescription("Whether united under the leadership of a mighty warlock OI' having fought to a standstill after years of conflict, ore and human tribes sometimes form alliances, joining forces into a larger horde lo the terror of civilized lands nearby. When these alliances are sealed by marriages, half-ores are born. Some half-ores rise to become proud chiefs of ore tribes, their human blood giving them an edge over their full-blooded ore rivals. Some venture into the world lo prove their worth among humans and other more civilized races. Many of these become adventurers, achieving greatness for their mighty deeds and notoriety for their barbaric customs and savage fury.");
+		this.setDescription("Half-orcs' grayish pigmentation, sloping foreheads, jutting jaws, prominent teeth, and lowering builds make their orcish heritage plain for all to see. Half-ores stand between 6 and 7 feel tall and usually weigh between 180 and 250 pounds.");
+		this.setBook("PHB 40");
 	}
 	private int Age() {
 		int age = 0;
@@ -44,25 +44,21 @@ public class HalfOrc extends Races{
 	private String Height() {
 		String height = "";
 		Random rand = new Random();
-		int base = 58;
-		int add1 = rand.nextInt(10 + 1) + 1;
-		int add2 = rand.nextInt(10 + 1) + 1;
+		int base = 55;
+		int add1 = rand.nextInt(12 + 1) + 1;
+		int add2 = rand.nextInt(12 + 1) + 1;
 		mod = add1 + add2;
 		int total = base + mod;
 		int feet = ((int) total / 12);
 		int inches =  total - (((int) total / 12) * 12);
-		height = feet + "'" + inches + "\"";
+		height = feet + " Foot " + inches + " Inch";
 		return height;
 	}
 	private String Weight() {
 		String weight = "";
-		Random rand = new Random();
-		int base = 140;
-		int add1 = rand.nextInt(6 + 1) + 1;
-		int add2 = rand.nextInt(6 + 1) + 1;
-		mod = mod * (add1 + add2);
-		int total = base + mod;
-		weight = total + "lbs";
+		int base = 135;
+		int total = base + (mod * 7);
+		weight = total + " Pounds";
 		return weight;
 	}
 }

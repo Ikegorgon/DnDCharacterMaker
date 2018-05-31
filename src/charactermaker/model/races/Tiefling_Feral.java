@@ -4,27 +4,28 @@ import java.util.*;
 import charactermaker.model.features.skills.*;
 import charactermaker.model.features.feats.racialfeat.*;
 
-public class Tiefling_Feral extends Races{
+public class AAA extends Races{
 	private List<Skills> ability;
 	private List<RacialFeats> feats;
 	private List<String> proficiency;
 	private int mod;
-	public Tiefling_Feral() {
+	public AAA() {
 //		super("");
 		this.setAge(Age());
 		this.setHeight(Height());
 		this.setWeight(Weight());
 //		this.setSpeed();
 		ability = new ArrayList<Skills>();
-//		ability.add();
+//		ability.add(new ());
 		feats = new ArrayList<RacialFeats>();
-//		feats.add();
+//		feats.add(new ());
 		proficiency = new ArrayList<String>();
-//		proficiency.add();
+//		proficiency.add("");
 		this.setAbility(ability);
 		this.setFeats(feats);
 		this.setProficiency(proficiency);
 //		this.setDescription("");
+//		this.setBook("");
 	}
 	private int Age() {
 		int age = 0;
@@ -44,18 +45,14 @@ public class Tiefling_Feral extends Races{
 		int total = base + mod;
 		int feet = ((int) total / 12);
 		int inches =  total - (((int) total / 12) * 12);
-		height = feet + "'" + inches + "\"";
+		height = feet + " Foot " + inches + " Inch";
 		return height;
 	}
 	private String Weight() {
 		String weight = "";
-		Random rand = new Random();
 //		int base = ;
-//		int add1 = rand.nextInt( + 1) + 1;
-//		int add2 = rand.nextInt( + 1) + 1;
-		mod = mod * (add1 + add2);
-		int total = base + mod;
-		weight = total + "lbs";
+//		int total = base + (mod * );
+		weight = total + " Pounds";
 		return weight;
 	}
 }

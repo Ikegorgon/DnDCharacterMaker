@@ -35,6 +35,15 @@ public class Frame extends JFrame {
 		}
 		this.revalidate();
 	}
+	public void changePanel(Panel1 panel1) {
+		panel2 = new Panel2(app);
+		if (this.getContentPane() == panel1) {
+			this.setContentPane(panel2);
+		} else {
+			this.setContentPane(panel1);
+		}
+		this.revalidate();
+	}
 	public Controller getController() {
 		return app;
 	}
