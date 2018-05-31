@@ -13,7 +13,7 @@ public class Acolyte extends Backgrounds {
 //		this.setDescription("");
 //		this.setBook("PHB");
 		feats = new ArrayList<BackgroundFeats>();
-//		feats.add();
+		feats.add(new ShelterOfTheFaithful());
 		proficiency = new ArrayList<String>();
 //		proficiency.add();
 		equipment = new ArrayList<Items>();
