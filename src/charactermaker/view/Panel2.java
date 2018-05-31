@@ -2,14 +2,11 @@ package charactermaker.view;
 
 import charactermaker.controller.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
+import java.text.*;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.MatteBorder;
+import javax.swing.text.*;
+import javax.swing.border.*;
 
 public class Panel2 extends JPanel {
 	private Controller app;
@@ -26,7 +23,7 @@ public class Panel2 extends JPanel {
 	private JLabel archetypesLabel;
 	private JComboBox archetypes;
 	private JLabel levelLabel;
-	private JTextField level;
+	private JFormattedTextField level;
 	private JLabel backgroundsLabel;
 	private JComboBox backgrounds;
 	private JLabel racesLabel;
@@ -34,7 +31,7 @@ public class Panel2 extends JPanel {
 	private JLabel alignmentLabel;
 	private JComboBox alignment;
 	private JLabel xpLabel;
-	private JTextField xp;
+	private JFormattedTextField xp;
 	private JLabel acLabel;
 	private JTextField ac;
 	private JLabel initiativeLabel;
@@ -61,6 +58,79 @@ public class Panel2 extends JPanel {
 	private JTextField proficiency;
 	private JLabel passiveWisdomLabel;
 	private JTextField passiveWisdom;
+	private JLabel strengthLabel;
+	private JCheckBox strengthProficiency;
+	private JTextField stength;
+	private JLabel athleticsLabel;
+	private JCheckBox athleticsProficiency;
+	private JTextField athletics;
+	private JLabel dexterityLabel;
+	private JCheckBox dexterityProficiency;
+	
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel constitutionLabel;
+	private JCheckBox constitutionProficiency;
+	
+	private JLabel intelligenceLabel;
+	private JCheckBox intelligenceProficiency;
+	
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel wisdomLabel;
+	private JCheckBox wisdomProficiency;
+	
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel charismaLabel;
+	private JCheckBox charismaProficiency;
+	
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	private JLabel Label;
+	private JCheckBox Proficiency;
+	private JTextField ;
+	
 	
 	private JLabel descriptionLabel;
 	private JScrollPane descriptionArea;
@@ -75,6 +145,10 @@ public class Panel2 extends JPanel {
 	private JTextField book;
 	
 	
+	
+	private JLabel featsLabel;
+	
+	private JLabel spellsLabel;
 	
 	private JButton stats;
 	private JButton info;
@@ -105,6 +179,7 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, holder, -10, SpringLayout.EAST, this);
 		holder.setBorder(new MatteBorder(5, 5, 5, 5, (Color) new Color(0, 0, 0)));
 		characterNameLabel = new JLabel("Name");
+		characterNameLabel.setToolTipText("Character Name");
 		layout.putConstraint(SpringLayout.NORTH, characterNameLabel, 10, SpringLayout.NORTH, holder);
 		layout.putConstraint(SpringLayout.WEST, characterNameLabel, 10, SpringLayout.WEST, holder);
 		layout.putConstraint(SpringLayout.SOUTH, characterNameLabel, 40, SpringLayout.NORTH, holder);
@@ -119,6 +194,7 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, characterName, 0, SpringLayout.SOUTH, characterNameLabel);
 		layout.putConstraint(SpringLayout.EAST, characterName, 160, SpringLayout.EAST, characterNameLabel);
 		classesLabel = new JLabel("Class");
+		classesLabel.setToolTipText("Character Class");
 		layout.putConstraint(SpringLayout.NORTH, classesLabel, 5, SpringLayout.SOUTH, characterNameLabel);
 		layout.putConstraint(SpringLayout.SOUTH, classesLabel, 35, SpringLayout.SOUTH, characterNameLabel);
 		classesLabel.setOpaque(true);
@@ -133,6 +209,7 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, classes, 0, SpringLayout.SOUTH, classesLabel);
 		layout.putConstraint(SpringLayout.EAST, classes, 0, SpringLayout.EAST, characterName);
 		archetypesLabel = new JLabel("Archetype");
+		archetypesLabel.setToolTipText("Character Archetype");
 		archetypesLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		archetypesLabel.setOpaque(true);
 		archetypesLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -146,23 +223,31 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, archetypes, 0, SpringLayout.SOUTH, archetypesLabel);
 		layout.putConstraint(SpringLayout.EAST, archetypes, 0, SpringLayout.EAST, classes);
 		levelLabel = new JLabel("Level");
-		layout.putConstraint(SpringLayout.NORTH, levelLabel, 5, SpringLayout.SOUTH, archetypesLabel);
+		levelLabel.setToolTipText("Character Level");
 		layout.putConstraint(SpringLayout.WEST, levelLabel, 0, SpringLayout.WEST, archetypesLabel);
-		layout.putConstraint(SpringLayout.SOUTH, levelLabel, 35, SpringLayout.SOUTH, archetypesLabel);
 		layout.putConstraint(SpringLayout.EAST, levelLabel, 0, SpringLayout.EAST, archetypesLabel);
 		levelLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		levelLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		levelLabel.setOpaque(true);
-		level = new JTextField("1");
+		NumberFormat format = NumberFormat.getInstance();
+		NumberFormatter levelformatter = new NumberFormatter(format);
+		levelformatter.setValueClass(Integer.class);
+		levelformatter.setMinimum(1);
+		levelformatter.setMaximum(20);
+//		formatter.setCommitsOnValidEdit(true);
+		level = new JFormattedTextField(levelformatter);
+		level.setToolTipText("Level between 1 & 20");
+		level.setText("1");
 		level.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, level, 0, SpringLayout.NORTH, levelLabel);
 		layout.putConstraint(SpringLayout.WEST, level, 0, SpringLayout.WEST, classes);
 		layout.putConstraint(SpringLayout.SOUTH, level, 0, SpringLayout.SOUTH, levelLabel);
 		layout.putConstraint(SpringLayout.EAST, level, 0, SpringLayout.EAST, classes);
 		backgroundsLabel = new JLabel("Background");
-		layout.putConstraint(SpringLayout.NORTH, backgroundsLabel, 5, SpringLayout.SOUTH, levelLabel);
+		layout.putConstraint(SpringLayout.NORTH, backgroundsLabel, 5, SpringLayout.SOUTH, archetypesLabel);
+		layout.putConstraint(SpringLayout.SOUTH, backgroundsLabel, 35, SpringLayout.SOUTH, archetypesLabel);
+		backgroundsLabel.setToolTipText("Character Background");
 		layout.putConstraint(SpringLayout.WEST, backgroundsLabel, 0, SpringLayout.WEST, levelLabel);
-		layout.putConstraint(SpringLayout.SOUTH, backgroundsLabel, 35, SpringLayout.SOUTH, levelLabel);
 		layout.putConstraint(SpringLayout.EAST, backgroundsLabel, 0, SpringLayout.EAST, levelLabel);
 		backgroundsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		backgroundsLabel.setOpaque(true);
@@ -186,6 +271,8 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, races, 0, SpringLayout.SOUTH, racesLabel);
 		layout.putConstraint(SpringLayout.EAST, races, 0, SpringLayout.EAST, backgrounds);
 		alignmentLabel = new JLabel("Alignment");
+		layout.putConstraint(SpringLayout.NORTH, levelLabel, 5, SpringLayout.SOUTH, alignmentLabel);
+		layout.putConstraint(SpringLayout.SOUTH, levelLabel, 35, SpringLayout.SOUTH, alignmentLabel);
 		alignmentLabel.setOpaque(true);
 		alignmentLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		alignmentLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -199,14 +286,19 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, alignment, 0, SpringLayout.SOUTH, alignmentLabel);
 		layout.putConstraint(SpringLayout.EAST, alignment, 0, SpringLayout.EAST, races);
 		xpLabel = new JLabel("XP");
-		layout.putConstraint(SpringLayout.NORTH, xpLabel, 5, SpringLayout.SOUTH, alignmentLabel);
+		layout.putConstraint(SpringLayout.NORTH, xpLabel, 5, SpringLayout.SOUTH, levelLabel);
 		layout.putConstraint(SpringLayout.WEST, xpLabel, 0, SpringLayout.WEST, alignmentLabel);
-		layout.putConstraint(SpringLayout.SOUTH, xpLabel, 35, SpringLayout.SOUTH, alignmentLabel);
+		layout.putConstraint(SpringLayout.SOUTH, xpLabel, 35, SpringLayout.SOUTH, levelLabel);
 		layout.putConstraint(SpringLayout.EAST, xpLabel, 0, SpringLayout.EAST, alignmentLabel);
 		xpLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		xpLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		xpLabel.setOpaque(true);
-		xp = new JTextField("0");
+		NumberFormatter xpformatter = new NumberFormatter(format);
+		xpformatter.setValueClass(Integer.class);
+		xpformatter.setMinimum(0);
+		xpformatter.setMaximum(Integer.MAX_VALUE);
+		xp = new JFormattedTextField(xpformatter);
+		xp.setText("0");
 		xp.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, xp, 0, SpringLayout.NORTH, xpLabel);
 		layout.putConstraint(SpringLayout.WEST, xp, 0, SpringLayout.WEST, alignment);
@@ -350,6 +442,7 @@ public class Panel2 extends JPanel {
 		inspirationLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		inspirationLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		inspiration = new JCheckBox();
+		inspiration.setOpaque(true);
 		inspiration.setText("Inspired");
 		inspiration.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, inspiration, 0, SpringLayout.NORTH, inspirationLabel);
@@ -385,6 +478,8 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.SOUTH, passiveWisdom, 0, SpringLayout.SOUTH, passiveWisdomLabel);
 		layout.putConstraint(SpringLayout.EAST, passiveWisdom, 0, SpringLayout.EAST, proficiency);
 		
+		
+		
 		descriptionLabel = new JLabel("Description");
 		descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		descriptionLabel.setOpaque(true);
@@ -410,6 +505,7 @@ public class Panel2 extends JPanel {
 		heightLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		heightLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		height = new JTextField();
+		height.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, heightLabel, 0, SpringLayout.NORTH, height);
 		layout.putConstraint(SpringLayout.WEST, heightLabel, -110, SpringLayout.WEST, height);
 		layout.putConstraint(SpringLayout.SOUTH, heightLabel, 0, SpringLayout.SOUTH, height);
@@ -427,6 +523,7 @@ public class Panel2 extends JPanel {
 		weightLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		weightLabel.setOpaque(true);
 		weight = new JTextField();
+		weight.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, weight, 0, SpringLayout.NORTH, weightLabel);
 		layout.putConstraint(SpringLayout.WEST, weight, 0, SpringLayout.WEST, height);
 		layout.putConstraint(SpringLayout.SOUTH, weight, 0, SpringLayout.SOUTH, weightLabel);
@@ -440,6 +537,7 @@ public class Panel2 extends JPanel {
 		ageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		ageLabel.setOpaque(true);
 		age = new JTextField();
+		age.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, age, 0, SpringLayout.NORTH, ageLabel);
 		layout.putConstraint(SpringLayout.WEST, age, 0, SpringLayout.WEST, weight);
 		layout.putConstraint(SpringLayout.SOUTH, age, 0, SpringLayout.SOUTH, ageLabel);
@@ -453,43 +551,63 @@ public class Panel2 extends JPanel {
 		bookLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		bookLabel.setOpaque(true);
 		book = new JTextField();
+		book.setHorizontalAlignment(SwingConstants.CENTER);
 		layout.putConstraint(SpringLayout.NORTH, book, 0, SpringLayout.NORTH, bookLabel);
 		layout.putConstraint(SpringLayout.WEST, book, 0, SpringLayout.WEST, age);
 		layout.putConstraint(SpringLayout.SOUTH, book, 0, SpringLayout.SOUTH, bookLabel);
 		layout.putConstraint(SpringLayout.EAST, book, 0, SpringLayout.EAST, age);
 		
+		
+		
+		spellsLabel = new JLabel("Spells: To Be Built");
+		spellsLabel.setBorder(new LineBorder(Color.WHITE, 10));
+		spellsLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 30));
+		spellsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		spellsLabel.setForeground(Color.WHITE);
+		spellsLabel.setBackground(Color.BLACK);
+		spellsLabel.setOpaque(true);
+		layout.putConstraint(SpringLayout.NORTH, spellsLabel, 10, SpringLayout.NORTH, holder);
+		layout.putConstraint(SpringLayout.WEST, spellsLabel, 10, SpringLayout.WEST, holder);
+		layout.putConstraint(SpringLayout.SOUTH, spellsLabel, -10, SpringLayout.SOUTH, holder);
+		layout.putConstraint(SpringLayout.EAST, spellsLabel, -10, SpringLayout.EAST, holder);
+		
+		
+		
+		featsLabel = new JLabel("Features: To Be Built");
+		featsLabel.setBorder(new LineBorder(Color.WHITE, 10));
+		featsLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 30));
+		featsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		featsLabel.setForeground(Color.WHITE);
+		featsLabel.setBackground(Color.BLACK);
+		featsLabel.setOpaque(true);
+		layout.putConstraint(SpringLayout.NORTH, featsLabel, 10, SpringLayout.NORTH, holder);
+		layout.putConstraint(SpringLayout.WEST, featsLabel, 10, SpringLayout.WEST, holder);
+		layout.putConstraint(SpringLayout.SOUTH, featsLabel, -10, SpringLayout.SOUTH, holder);
+		layout.putConstraint(SpringLayout.EAST, featsLabel, -10, SpringLayout.EAST, holder);
+		
+		
 		stats = new JButton("Stats");
 		layout.putConstraint(SpringLayout.NORTH, stats, -60, SpringLayout.SOUTH, this);
 		layout.putConstraint(SpringLayout.EAST, stats, 145, SpringLayout.WEST, this);
-		stats.setForeground(Color.WHITE);
-		stats.setBackground(Color.BLACK);
 		layout.putConstraint(SpringLayout.SOUTH, holder, -10, SpringLayout.NORTH, stats);
 		layout.putConstraint(SpringLayout.WEST, stats, 10, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.SOUTH, stats, -10, SpringLayout.SOUTH, this);
 		info = new JButton("Info");
-		info.setBackground(Color.BLACK);
-		info.setForeground(Color.WHITE);
 		layout.putConstraint(SpringLayout.NORTH, info, 0, SpringLayout.NORTH, stats);
 		layout.putConstraint(SpringLayout.WEST, info, 10, SpringLayout.EAST, stats);
 		layout.putConstraint(SpringLayout.SOUTH, info, 0, SpringLayout.SOUTH, stats);
 		layout.putConstraint(SpringLayout.EAST, info, 145, SpringLayout.EAST, stats);
 		feats = new JButton("Features");
-		feats.setForeground(Color.WHITE);
-		feats.setBackground(Color.BLACK);
 		layout.putConstraint(SpringLayout.NORTH, feats, 0, SpringLayout.NORTH, info);
 		layout.putConstraint(SpringLayout.WEST, feats, 10, SpringLayout.EAST, info);
 		layout.putConstraint(SpringLayout.SOUTH, feats, 0, SpringLayout.SOUTH, info);
 		layout.putConstraint(SpringLayout.EAST, feats, 145, SpringLayout.EAST, info);
 		spells = new JButton("Spells");
-		spells.setForeground(Color.WHITE);
-		spells.setBackground(Color.BLACK);
 		layout.putConstraint(SpringLayout.NORTH, spells, 0, SpringLayout.NORTH, feats);
 		layout.putConstraint(SpringLayout.WEST, spells, 10, SpringLayout.EAST, feats);
 		layout.putConstraint(SpringLayout.SOUTH, spells, 0, SpringLayout.SOUTH, feats);
 		layout.putConstraint(SpringLayout.EAST, spells, 145, SpringLayout.EAST, feats);
 		newCharacter = new JButton("New Character");
-		newCharacter.setForeground(Color.WHITE);
-		newCharacter.setBackground(Color.BLACK);
 		layout.putConstraint(SpringLayout.NORTH, newCharacter, 0, SpringLayout.NORTH, spells);
 		layout.putConstraint(SpringLayout.WEST, newCharacter, 10, SpringLayout.EAST, spells);
 		layout.putConstraint(SpringLayout.SOUTH, newCharacter, 0, SpringLayout.SOUTH, spells);
@@ -562,6 +680,8 @@ public class Panel2 extends JPanel {
 		this.add(age);
 		this.add(bookLabel);
 		this.add(book);
+		this.add(spellsLabel);
+		this.add(featsLabel);
 		
 		this.add(holder);
 		
@@ -591,12 +711,99 @@ public class Panel2 extends JPanel {
 		races.setSelectedIndex(panel1.getRaceList().getSelectedIndex());
 		alignment.setSelectedIndex(panel1.getAlignmentList().getSelectedIndex());
 		speed.setText(app.getRaces().get(races.getSelectedIndex()).getSpeed() + " Feet");
+		setupLevel();
 		
-		description.append(app.getRaces().get(races.getSelectedIndex()).getDescription());
+		description.setText(app.getRaces().get(races.getSelectedIndex()).getDescription());
 		age.setText(app.getRaces().get(races.getSelectedIndex()).getAge() + " Years Old");
 		height.setText(app.getRaces().get(races.getSelectedIndex()).getHeight());
 		weight.setText(app.getRaces().get(races.getSelectedIndex()).getWeight());
 		book.setText(app.getRaces().get(races.getSelectedIndex()).getBook());
+	}
+	public void setupLevel() {
+		int xpnum = Integer.parseInt(xp.getText());
+		int lev = 0;
+		if (xpnum < 300) {
+			lev = 1;
+		}
+		if (xpnum >= 300) {
+			lev = 2;
+		}
+		if (xpnum >= 900) {
+			lev = 3;
+		}
+		if (xpnum >= 2700) {
+			lev = 4;
+		}
+		if (xpnum >= 6500) {
+			lev = 5;
+		}
+		if (xpnum >= 14000) {
+			lev = 6;
+		}
+		if (xpnum >= 23000) {
+			lev = 7;
+		}
+		if (xpnum >= 34000) {
+			lev = 8;
+		}
+		if (xpnum >= 48000) {
+			lev = 9;
+		}
+		if (xpnum >= 64000) {
+			lev = 10;
+		}
+		if (xpnum >= 85000) {
+			lev = 11;
+		}
+		if (xpnum >= 100000) {
+			lev = 12;
+		}
+		if (xpnum >= 120000) {
+			lev = 13;
+		}
+		if (xpnum >= 140000) {
+			lev = 14;
+		}
+		if (xpnum >= 165000) {
+			lev = 15;
+		}
+		if (xpnum >= 195000) {
+			lev = 16;
+		}
+		if (xpnum >= 225000) {
+			lev = 17;
+		}
+		if (xpnum >= 265000) {
+			lev = 18;
+		}
+		if (xpnum >= 305000) {
+			lev = 19;
+		}
+		if (xpnum >= 355000) {
+			lev = 20;
+		}
+		level.setText(lev + "");
+		setupProficiency();
+	}
+	public void setupProficiency() {
+		int lev = Integer.parseInt(level.getText());
+		int prof = 0;
+		if (lev < 5) {
+			prof = 2;
+		}
+		if (lev >= 5) {
+			prof = 3;
+		}
+		if (lev >= 9) {
+			prof = 4;
+		}
+		if (lev >= 13) {
+			prof = 5;
+		}
+		if (lev >= 17) {
+			prof = 6;
+		}
+		proficiency.setText("+ " + prof);
 	}
 	private void deactivate() {
 		characterNameLabel.setVisible(false);
@@ -652,6 +859,8 @@ public class Panel2 extends JPanel {
 		age.setVisible(false);
 		bookLabel.setVisible(false);
 		book.setVisible(false);
+		spellsLabel.setVisible(false);
+		featsLabel.setVisible(false);
 	}
 	private void activateStats() {
 		characterNameLabel.setVisible(true);
@@ -711,16 +920,96 @@ public class Panel2 extends JPanel {
 		book.setVisible(true);
 	}
 	private void activateFeats() {
-		
+		featsLabel.setVisible(true);
 	}
 	private void activateSpells() {
-		
+		spellsLabel.setVisible(true);
 	}
 	private void setupListeners() {
 		races.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel1.getRaceList().setSelectedIndex(races.getSelectedIndex());
 				setupContent();
+			}
+		});
+		level.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int num = 0;
+				try {
+					num = Integer.parseInt(level.getText());
+				} catch (NumberFormatException error) {
+					
+				}
+				if (num <= 20 || !level.getText().equals("")) {
+					try {
+						setupProficiency();
+					} catch (NumberFormatException error) {
+						
+					}
+				}
+			}
+		});
+		level.addFocusListener(new FocusListener() {
+			public void focusGained(FocusEvent e) {
+				int num = 0;
+				try {
+					num = Integer.parseInt(level.getText());
+				} catch (NumberFormatException error) {
+					
+				}
+				if (num <= 20 || !level.getText().equals("")) {
+					try {
+						setupProficiency();
+					} catch (NumberFormatException error) {
+						
+					}
+				}
+			}
+			public void focusLost(FocusEvent e) {
+				int num = 0;
+				try {
+					num = Integer.parseInt(level.getText());
+				} catch (NumberFormatException error) {
+					
+				}
+				if (num <= 20 || !level.getText().equals("")) {
+					try {
+						setupProficiency();
+					} catch (NumberFormatException error) {
+						
+					}
+				}
+			}
+		});
+		xp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!level.getText().equals("")) {
+					try {
+						setupLevel();
+					} catch (NumberFormatException error) {
+						
+					}
+				}
+			}
+		});
+		xp.addFocusListener(new FocusListener() {
+			public void focusGained(FocusEvent e) {
+				if (!level.getText().equals("")) {
+					try {
+						setupLevel();
+					} catch (NumberFormatException error) {
+						
+					}
+				}
+			}
+			public void focusLost(FocusEvent e) {
+				if (!level.getText().equals("")) {
+					try {
+						setupLevel();
+					} catch (NumberFormatException error) {
+						
+					}
+				}
 			}
 		});
 		stats.addActionListener(new ActionListener() {

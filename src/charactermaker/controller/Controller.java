@@ -14,6 +14,8 @@ import charactermaker.model.items.*;
 import charactermaker.model.spells.*;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 public class Controller {
 	private Frame frame;
 	private List<Classes> classes;
@@ -221,6 +223,12 @@ public class Controller {
 			alignmentTypes[i] = alignments.get(i);
 		}
 		return alignmentTypes;
+	}
+	public void handleError(Exception error) {
+		displayText(error.getMessage());
+	}
+	public void displayText (String sample) {
+		JOptionPane.showMessageDialog(null, sample, "", JOptionPane.INFORMATION_MESSAGE, null);
 	}
 	public Frame getFrame() {
 		return frame;
