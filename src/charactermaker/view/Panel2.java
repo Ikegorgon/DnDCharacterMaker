@@ -1,6 +1,10 @@
 package charactermaker.view;
 
 import charactermaker.controller.*;
+import charactermaker.model.features.feats.racialfeat.*;
+import charactermaker.model.races.*;
+import java.util.*;
+import java.util.List;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.*;
@@ -162,11 +166,11 @@ public class Panel2 extends JPanel {
 	private JLabel bookLabel;
 	private JTextField book;
 	
-	
-	
-	private JLabel featsLabel;
+	private JTable featsTable;
+	private JScrollPane featsScroll;
 	
 	private JLabel spellsLabel;
+//	private JTable spellsTable;
 	
 	private JButton stats;
 	private JButton info;
@@ -500,35 +504,141 @@ public class Panel2 extends JPanel {
 		skillFormatter.setMinimum(0);
 		skillFormatter.setMaximum(30);
 		strengthLabel = new JLabel("Strength");
+		layout.putConstraint(SpringLayout.EAST, strengthLabel, 210, SpringLayout.EAST, characterName);
+		strengthLabel.setOpaque(true);
+		strengthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		strengthLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		layout.putConstraint(SpringLayout.NORTH, strengthLabel, 0, SpringLayout.NORTH, characterName);
+		layout.putConstraint(SpringLayout.WEST, strengthLabel, 10, SpringLayout.EAST, characterName);
+		layout.putConstraint(SpringLayout.SOUTH, strengthLabel, 0, SpringLayout.SOUTH, characterName);
 		strength = new JFormattedTextField(skillFormatter);
+		layout.putConstraint(SpringLayout.WEST, strength, 10, SpringLayout.WEST, strengthLabel);
+		layout.putConstraint(SpringLayout.EAST, strength, 95, SpringLayout.WEST, strengthLabel);
+		strength.setHorizontalAlignment(SwingConstants.CENTER);
+		layout.putConstraint(SpringLayout.NORTH, strength, 5, SpringLayout.SOUTH, strengthLabel);
+		layout.putConstraint(SpringLayout.SOUTH, strength, 35, SpringLayout.SOUTH, strengthLabel);
 		strength.setText("0");
 		strengthBonus = new JTextField("+ 0");
-		strengthSave = new JTextField("");
+		layout.putConstraint(SpringLayout.WEST, strengthBonus, -95, SpringLayout.EAST, strengthLabel);
+		layout.putConstraint(SpringLayout.EAST, strengthBonus, -10, SpringLayout.EAST, strengthLabel);
+		strengthBonus.setHorizontalAlignment(SwingConstants.CENTER);
+		layout.putConstraint(SpringLayout.NORTH, strengthBonus, 5, SpringLayout.SOUTH, strengthLabel);
+		layout.putConstraint(SpringLayout.SOUTH, strengthBonus, 0, SpringLayout.SOUTH, strength);
+		strengthSave = new JTextField("+ 0");
+		strengthSave.setHorizontalAlignment(SwingConstants.CENTER);
+		layout.putConstraint(SpringLayout.NORTH, strengthSave, 5, SpringLayout.SOUTH, strengthBonus);
+		layout.putConstraint(SpringLayout.WEST, strengthSave, 0, SpringLayout.WEST, strengthBonus);
+		layout.putConstraint(SpringLayout.SOUTH, strengthSave, 35, SpringLayout.SOUTH, strengthBonus);
+		layout.putConstraint(SpringLayout.EAST, strengthSave, 0, SpringLayout.EAST, strengthBonus);
 		dexterityLabel = new JLabel("Dexterity");
+		dexterityLabel.setOpaque(true);
+		dexterityLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		layout.putConstraint(SpringLayout.WEST, dexterityLabel, 0, SpringLayout.WEST, strengthLabel);
+		layout.putConstraint(SpringLayout.EAST, dexterityLabel, 0, SpringLayout.EAST, strengthLabel);
+		dexterityLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		dexterity = new JFormattedTextField(skillFormatter);
+		dexterity.setHorizontalAlignment(SwingConstants.CENTER);
+		layout.putConstraint(SpringLayout.NORTH, dexterity, 5, SpringLayout.SOUTH, dexterityLabel);
+		layout.putConstraint(SpringLayout.WEST, dexterity, 10, SpringLayout.WEST, dexterityLabel);
+		layout.putConstraint(SpringLayout.SOUTH, dexterity, 35, SpringLayout.SOUTH, dexterityLabel);
+		layout.putConstraint(SpringLayout.EAST, dexterity, 95, SpringLayout.WEST, dexterityLabel);
 		dexterity.setText("0");
 		dexterityBonus = new JTextField("+ 0");
-		dexteritySave = new JTextField("");
-		constitutionLabel = new JLabel("Constitution");
+		layout.putConstraint(SpringLayout.NORTH, dexterityBonus, 5, SpringLayout.SOUTH, dexterityLabel);
+		layout.putConstraint(SpringLayout.WEST, dexterityBonus, -95, SpringLayout.EAST, dexterityLabel);
+		layout.putConstraint(SpringLayout.SOUTH, dexterityBonus, 35, SpringLayout.SOUTH, dexterityLabel);
+		layout.putConstraint(SpringLayout.EAST, dexterityBonus, -10, SpringLayout.EAST, dexterityLabel);
+		dexterityBonus.setHorizontalAlignment(SwingConstants.CENTER);
+		dexteritySave = new JTextField("+ 0");
+		layout.putConstraint(SpringLayout.NORTH, dexteritySave, 5, SpringLayout.SOUTH, dexterityBonus);
+		layout.putConstraint(SpringLayout.WEST, dexteritySave, 0, SpringLayout.WEST, dexterityBonus);
+		layout.putConstraint(SpringLayout.SOUTH, dexteritySave, 35, SpringLayout.SOUTH, dexterityBonus);
+		layout.putConstraint(SpringLayout.EAST, dexteritySave, 0, SpringLayout.EAST, dexterityBonus);
+		dexteritySave.setHorizontalAlignment(SwingConstants.CENTER);
 		constitution = new JFormattedTextField(skillFormatter);
+		constitution.setHorizontalAlignment(SwingConstants.CENTER);
 		constitution.setText("0");
 		constitutionBonus = new JTextField("+ 0");
-		constitutionSave = new JTextField("");
+		constitutionBonus.setHorizontalAlignment(SwingConstants.CENTER);
+		constitutionSave = new JTextField("+ 0");
+		layout.putConstraint(SpringLayout.NORTH, constitutionSave, 5, SpringLayout.SOUTH, constitutionBonus);
+		layout.putConstraint(SpringLayout.WEST, constitutionSave, 0, SpringLayout.WEST, constitutionBonus);
+		layout.putConstraint(SpringLayout.SOUTH, constitutionSave, 35, SpringLayout.SOUTH, constitutionBonus);
+		layout.putConstraint(SpringLayout.EAST, constitutionSave, 0, SpringLayout.EAST, constitutionBonus);
+		constitutionSave.setHorizontalAlignment(SwingConstants.CENTER);
 		intelligenceLabel = new JLabel("Intelligence");
+		intelligenceLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		intelligenceLabel.setOpaque(true);
+		intelligenceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		intelligence = new JFormattedTextField(skillFormatter);
+		layout.putConstraint(SpringLayout.NORTH, intelligence, 5, SpringLayout.SOUTH, intelligenceLabel);
+		layout.putConstraint(SpringLayout.WEST, intelligence, 10, SpringLayout.WEST, intelligenceLabel);
+		layout.putConstraint(SpringLayout.SOUTH, intelligence, 35, SpringLayout.SOUTH, intelligenceLabel);
+		layout.putConstraint(SpringLayout.EAST, intelligence, 95, SpringLayout.WEST, intelligenceLabel);
+		intelligence.setHorizontalAlignment(SwingConstants.CENTER);
 		intelligence.setText("0");
 		intelligenceBonus = new JTextField("+ 0");
-		intelligenceSave = new JTextField("");
+		layout.putConstraint(SpringLayout.NORTH, intelligenceBonus, 5, SpringLayout.SOUTH, intelligenceLabel);
+		layout.putConstraint(SpringLayout.WEST, intelligenceBonus, -95, SpringLayout.EAST, intelligenceLabel);
+		layout.putConstraint(SpringLayout.SOUTH, intelligenceBonus, 35, SpringLayout.SOUTH, intelligenceLabel);
+		layout.putConstraint(SpringLayout.EAST, intelligenceBonus, -10, SpringLayout.EAST, intelligenceLabel);
+		intelligenceBonus.setHorizontalAlignment(SwingConstants.CENTER);
+		intelligenceSave = new JTextField("+ 0");
+		layout.putConstraint(SpringLayout.NORTH, intelligenceSave, 5, SpringLayout.SOUTH, intelligenceBonus);
+		layout.putConstraint(SpringLayout.WEST, intelligenceSave, 0, SpringLayout.WEST, intelligenceBonus);
+		layout.putConstraint(SpringLayout.SOUTH, intelligenceSave, 35, SpringLayout.SOUTH, intelligenceBonus);
+		layout.putConstraint(SpringLayout.EAST, intelligenceSave, 0, SpringLayout.EAST, intelligenceBonus);
+		intelligenceSave.setHorizontalAlignment(SwingConstants.CENTER);
 		wisdomLabel = new JLabel("Wisdom");
+		layout.putConstraint(SpringLayout.WEST, wisdomLabel, 0, SpringLayout.WEST, intelligenceLabel);
+		layout.putConstraint(SpringLayout.EAST, wisdomLabel, 0, SpringLayout.EAST, intelligenceLabel);
+		wisdomLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		wisdomLabel.setOpaque(true);
+		wisdomLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		wisdom = new JFormattedTextField(skillFormatter);
+		layout.putConstraint(SpringLayout.NORTH, wisdom, 5, SpringLayout.SOUTH, wisdomLabel);
+		layout.putConstraint(SpringLayout.WEST, wisdom, 10, SpringLayout.WEST, wisdomLabel);
+		layout.putConstraint(SpringLayout.SOUTH, wisdom, 35, SpringLayout.SOUTH, wisdomLabel);
+		layout.putConstraint(SpringLayout.EAST, wisdom, 95, SpringLayout.WEST, wisdomLabel);
+		wisdom.setHorizontalAlignment(SwingConstants.CENTER);
 		wisdom.setText("0");
 		wisdomBonus = new JTextField("+ 0");
-		wisdomSave = new JTextField("");
+		layout.putConstraint(SpringLayout.NORTH, wisdomBonus, 5, SpringLayout.SOUTH, wisdomLabel);
+		layout.putConstraint(SpringLayout.WEST, wisdomBonus, -95, SpringLayout.EAST, wisdomLabel);
+		layout.putConstraint(SpringLayout.SOUTH, wisdomBonus, 35, SpringLayout.SOUTH, wisdomLabel);
+		layout.putConstraint(SpringLayout.EAST, wisdomBonus, -10, SpringLayout.EAST, wisdomLabel);
+		wisdomBonus.setHorizontalAlignment(SwingConstants.CENTER);
+		wisdomSave = new JTextField("+ 0");
+		layout.putConstraint(SpringLayout.NORTH, wisdomSave, 5, SpringLayout.SOUTH, wisdomBonus);
+		layout.putConstraint(SpringLayout.WEST, wisdomSave, 0, SpringLayout.WEST, wisdomBonus);
+		layout.putConstraint(SpringLayout.SOUTH, wisdomSave, 35, SpringLayout.SOUTH, wisdomBonus);
+		layout.putConstraint(SpringLayout.EAST, wisdomSave, 0, SpringLayout.EAST, wisdomBonus);
+		wisdomSave.setHorizontalAlignment(SwingConstants.CENTER);
 		charismaLabel = new JLabel("Charisma");
+		layout.putConstraint(SpringLayout.WEST, charismaLabel, 0, SpringLayout.WEST, wisdomLabel);
+		layout.putConstraint(SpringLayout.EAST, charismaLabel, 0, SpringLayout.EAST, wisdomLabel);
+		charismaLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		charismaLabel.setOpaque(true);
+		charismaLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		charisma = new JFormattedTextField(skillFormatter);
+		layout.putConstraint(SpringLayout.NORTH, charisma, 5, SpringLayout.SOUTH, charismaLabel);
+		layout.putConstraint(SpringLayout.WEST, charisma, 10, SpringLayout.WEST, charismaLabel);
+		layout.putConstraint(SpringLayout.SOUTH, charisma, 35, SpringLayout.SOUTH, charismaLabel);
+		layout.putConstraint(SpringLayout.EAST, charisma, 95, SpringLayout.WEST, charismaLabel);
+		charisma.setHorizontalAlignment(SwingConstants.CENTER);
 		charisma.setText("0");
 		charismaBonus = new JTextField("+ 0");
-		charismaSave = new JTextField("");
+		layout.putConstraint(SpringLayout.NORTH, charismaBonus, 5, SpringLayout.SOUTH, charismaLabel);
+		layout.putConstraint(SpringLayout.WEST, charismaBonus, -95, SpringLayout.EAST, charismaLabel);
+		layout.putConstraint(SpringLayout.SOUTH, charismaBonus, 35, SpringLayout.SOUTH, charismaLabel);
+		layout.putConstraint(SpringLayout.EAST, charismaBonus, -10, SpringLayout.EAST, charismaLabel);
+		charismaBonus.setHorizontalAlignment(SwingConstants.CENTER);
+		charismaSave = new JTextField("+ 0");
+		layout.putConstraint(SpringLayout.NORTH, charismaSave, 5, SpringLayout.SOUTH, charismaBonus);
+		layout.putConstraint(SpringLayout.WEST, charismaSave, 0, SpringLayout.WEST, charismaBonus);
+		layout.putConstraint(SpringLayout.SOUTH, charismaSave, 35, SpringLayout.SOUTH, charismaBonus);
+		layout.putConstraint(SpringLayout.EAST, charismaSave, 0, SpringLayout.EAST, charismaBonus);
+		charismaSave.setHorizontalAlignment(SwingConstants.CENTER);
 		athleticsLabel = new JLabel("Athletics");
 		athleticsProficiency = new JCheckBox();
 		athletics = new JTextField("+ 0");
@@ -590,11 +700,55 @@ public class Panel2 extends JPanel {
 		wisdomSaveLabel = new JLabel("Saving Throw");
 		charismaSaveLabel = new JLabel("Saving Throw");
 		strengthProficiency = new JCheckBox();
+		layout.putConstraint(SpringLayout.NORTH, dexterityLabel, 5, SpringLayout.SOUTH, strengthProficiency);
+		layout.putConstraint(SpringLayout.SOUTH, dexterityLabel, 35, SpringLayout.SOUTH, strengthProficiency);
+		strengthProficiency.setText("Proficient");
+		strengthProficiency.setHorizontalAlignment(SwingConstants.CENTER);
+		layout.putConstraint(SpringLayout.NORTH, strengthProficiency, 5, SpringLayout.SOUTH, strength);
+		layout.putConstraint(SpringLayout.WEST, strengthProficiency, 0, SpringLayout.WEST, strength);
+		layout.putConstraint(SpringLayout.SOUTH, strengthProficiency, 35, SpringLayout.SOUTH, strength);
+		layout.putConstraint(SpringLayout.EAST, strengthProficiency, 0, SpringLayout.EAST, strength);
 		dexterityProficiency = new JCheckBox();
+		dexterityProficiency.setText("Proficient");
+		layout.putConstraint(SpringLayout.NORTH, dexterityProficiency, 5, SpringLayout.SOUTH, dexterity);
+		layout.putConstraint(SpringLayout.WEST, dexterityProficiency, 0, SpringLayout.WEST, dexterity);
+		layout.putConstraint(SpringLayout.SOUTH, dexterityProficiency, 35, SpringLayout.SOUTH, dexterity);
+		layout.putConstraint(SpringLayout.EAST, dexterityProficiency, 0, SpringLayout.EAST, dexterity);
+		dexterityProficiency.setHorizontalAlignment(SwingConstants.CENTER);
 		constitutionProficiency = new JCheckBox();
+		constitutionProficiency.setText("Proficient");
+		layout.putConstraint(SpringLayout.NORTH, constitutionProficiency, 5, SpringLayout.SOUTH, constitution);
+		layout.putConstraint(SpringLayout.WEST, constitutionProficiency, 0, SpringLayout.WEST, constitution);
+		layout.putConstraint(SpringLayout.SOUTH, constitutionProficiency, 35, SpringLayout.SOUTH, constitution);
+		layout.putConstraint(SpringLayout.EAST, constitutionProficiency, 0, SpringLayout.EAST, constitution);
+		layout.putConstraint(SpringLayout.NORTH, intelligenceLabel, 5, SpringLayout.SOUTH, constitutionProficiency);
+		layout.putConstraint(SpringLayout.SOUTH, intelligenceLabel, 35, SpringLayout.SOUTH, constitutionProficiency);
+		constitutionProficiency.setHorizontalAlignment(SwingConstants.CENTER);
 		intelligenceProficiency = new JCheckBox();
+		layout.putConstraint(SpringLayout.NORTH, intelligenceProficiency, 5, SpringLayout.SOUTH, intelligence);
+		layout.putConstraint(SpringLayout.WEST, intelligenceProficiency, 0, SpringLayout.WEST, intelligence);
+		layout.putConstraint(SpringLayout.SOUTH, intelligenceProficiency, 35, SpringLayout.SOUTH, intelligence);
+		layout.putConstraint(SpringLayout.EAST, intelligenceProficiency, 0, SpringLayout.EAST, intelligence);
+		intelligenceProficiency.setText("Proficient");
+		layout.putConstraint(SpringLayout.NORTH, wisdomLabel, 5, SpringLayout.SOUTH, intelligenceProficiency);
+		layout.putConstraint(SpringLayout.SOUTH, wisdomLabel, 35, SpringLayout.SOUTH, intelligenceProficiency);
+		intelligenceProficiency.setHorizontalAlignment(SwingConstants.CENTER);
 		wisdomProficiency = new JCheckBox();
+		layout.putConstraint(SpringLayout.NORTH, wisdomProficiency, 5, SpringLayout.SOUTH, wisdom);
+		layout.putConstraint(SpringLayout.WEST, wisdomProficiency, 0, SpringLayout.WEST, wisdom);
+		layout.putConstraint(SpringLayout.SOUTH, wisdomProficiency, 35, SpringLayout.SOUTH, wisdom);
+		layout.putConstraint(SpringLayout.EAST, wisdomProficiency, 0, SpringLayout.EAST, wisdom);
+		wisdomProficiency.setText("Proficient");
+		layout.putConstraint(SpringLayout.NORTH, charismaLabel, 5, SpringLayout.SOUTH, wisdomProficiency);
+		layout.putConstraint(SpringLayout.SOUTH, charismaLabel, 35, SpringLayout.SOUTH, wisdomProficiency);
+		wisdomProficiency.setHorizontalAlignment(SwingConstants.CENTER);
 		charismaProficiency = new JCheckBox();
+		layout.putConstraint(SpringLayout.NORTH, charismaProficiency, 5, SpringLayout.SOUTH, charisma);
+		layout.putConstraint(SpringLayout.WEST, charismaProficiency, 0, SpringLayout.WEST, charisma);
+		layout.putConstraint(SpringLayout.SOUTH, charismaProficiency, 35, SpringLayout.SOUTH, charisma);
+		layout.putConstraint(SpringLayout.EAST, charismaProficiency, 0, SpringLayout.EAST, charisma);
+		charismaProficiency.setText("Proficient");
+		charismaProficiency.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		
 		
@@ -690,18 +844,40 @@ public class Panel2 extends JPanel {
 		layout.putConstraint(SpringLayout.EAST, spellsLabel, -10, SpringLayout.EAST, holder);
 		
 		
+		Races race = app.getRaces().get(panel1.getRaceList().getSelectedIndex());
+		List<RacialFeats> feat = new ArrayList<RacialFeats>();
+		for(int i = 0; i < race.getFeats().size(); i++) {
+			feat.add(race.getFeats().get(i));
+		}
+		String[] header = {"Name", "Race", "Prerequisite", "Description"};
+		Object[][] data = new Object[feat.size()][header.length];
+		for(int i = 0; i < feat.size(); i++) {
+			String[] temp = {feat.get(i).getName(), feat.get(i).getRace(),
+					feat.get(i).getPrerequisite(), feat.get(i).getDescription()};
+			data[i] = temp;
+		}
+		featsTable = new JTable(data, header);
+		featsTable.setEnabled(false);
+		featsTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		featsTable.setEditingRow(0);
+		featsTable.setEditingColumn(0);
+		featsTable.setOpaque(false);
+		featsTable.setRowMargin(2);
+		featsTable.setRowHeight(32);
+		featsTable.setGridColor(Color.DARK_GRAY);
+		featsTable.setForeground(Color.BLACK);
+		featsTable.setBackground(Color.WHITE);
+		featsTable.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+//		JTableHeader a = feat;
 		
-		featsLabel = new JLabel("Features: To Be Built");
-		featsLabel.setBorder(new LineBorder(Color.WHITE, 10));
-		featsLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 30));
-		featsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		featsLabel.setForeground(Color.WHITE);
-		featsLabel.setBackground(Color.BLACK);
-		featsLabel.setOpaque(true);
-		layout.putConstraint(SpringLayout.NORTH, featsLabel, 10, SpringLayout.NORTH, holder);
-		layout.putConstraint(SpringLayout.WEST, featsLabel, 10, SpringLayout.WEST, holder);
-		layout.putConstraint(SpringLayout.SOUTH, featsLabel, -10, SpringLayout.SOUTH, holder);
-		layout.putConstraint(SpringLayout.EAST, featsLabel, -10, SpringLayout.EAST, holder);
+		
+		featsScroll = new JScrollPane(featsTable);
+		featsScroll.setBorder(new LineBorder(Color.BLACK, 5));
+		layout.putConstraint(SpringLayout.NORTH, featsScroll, 10, SpringLayout.NORTH, holder);
+		layout.putConstraint(SpringLayout.WEST, featsScroll, 10, SpringLayout.WEST, holder);
+		layout.putConstraint(SpringLayout.SOUTH, featsScroll, -10, SpringLayout.SOUTH, holder);
+		layout.putConstraint(SpringLayout.EAST, featsScroll, -10, SpringLayout.EAST, holder);
+		
 		
 		
 		stats = new JButton("Stats");
@@ -788,18 +964,6 @@ public class Panel2 extends JPanel {
 		this.add(feats);
 		this.add(spells);
 		this.add(newCharacter);
-		this.add(descriptionLabel);
-		this.add(descriptionArea);
-		this.add(heightLabel);
-		this.add(height);
-		this.add(weightLabel);
-		this.add(weight);
-		this.add(ageLabel);
-		this.add(age);
-		this.add(bookLabel);
-		this.add(book);
-		this.add(spellsLabel);
-		this.add(featsLabel);
 		this.add(strengthLabel);
 		this.add(strength);
 		this.add(strengthBonus);
@@ -810,6 +974,24 @@ public class Panel2 extends JPanel {
 		this.add(dexterityBonus);
 		this.add(dexterityProficiency);
 		this.add(dexteritySave);
+		constitutionLabel = new JLabel("Constitution");
+		layout.putConstraint(SpringLayout.NORTH, constitutionBonus, 5, SpringLayout.SOUTH, constitutionLabel);
+		layout.putConstraint(SpringLayout.WEST, constitutionBonus, -95, SpringLayout.EAST, constitutionLabel);
+		layout.putConstraint(SpringLayout.SOUTH, constitutionBonus, 35, SpringLayout.SOUTH, constitutionLabel);
+		layout.putConstraint(SpringLayout.EAST, constitutionBonus, -10, SpringLayout.EAST, constitutionLabel);
+		layout.putConstraint(SpringLayout.NORTH, constitution, 5, SpringLayout.SOUTH, constitutionLabel);
+		layout.putConstraint(SpringLayout.WEST, constitution, 10, SpringLayout.WEST, constitutionLabel);
+		layout.putConstraint(SpringLayout.SOUTH, constitution, 35, SpringLayout.SOUTH, constitutionLabel);
+		layout.putConstraint(SpringLayout.EAST, constitution, 95, SpringLayout.WEST, constitutionLabel);
+		layout.putConstraint(SpringLayout.NORTH, constitutionLabel, 5, SpringLayout.SOUTH, dexterityProficiency);
+		layout.putConstraint(SpringLayout.WEST, constitutionLabel, 0, SpringLayout.WEST, dexterityLabel);
+		layout.putConstraint(SpringLayout.SOUTH, constitutionLabel, 35, SpringLayout.SOUTH, dexterityProficiency);
+		layout.putConstraint(SpringLayout.EAST, constitutionLabel, 0, SpringLayout.EAST, dexterityLabel);
+		layout.putConstraint(SpringLayout.WEST, intelligenceLabel, 0, SpringLayout.WEST, constitutionLabel);
+		layout.putConstraint(SpringLayout.EAST, intelligenceLabel, 0, SpringLayout.EAST, constitutionLabel);
+		constitutionLabel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		constitutionLabel.setOpaque(true);
+		constitutionLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		this.add(constitutionLabel);
 		this.add(constitution);
 		this.add(constitutionBonus);
@@ -890,6 +1072,18 @@ public class Panel2 extends JPanel {
 		this.add(intelligenceSaveLabel);
 		this.add(wisdomSaveLabel);
 		this.add(charismaSaveLabel);
+		this.add(descriptionLabel);
+		this.add(descriptionArea);
+		this.add(heightLabel);
+		this.add(height);
+		this.add(weightLabel);
+		this.add(weight);
+		this.add(ageLabel);
+		this.add(age);
+		this.add(bookLabel);
+		this.add(book);
+		this.add(featsScroll);
+		this.add(spellsLabel);
 		
 		this.add(holder);
 		
@@ -912,6 +1106,49 @@ public class Panel2 extends JPanel {
 		
 	}
 	private void setupContent() {
+		strength.setText("" + rollDice());
+		strengthBonus.setText(modifier(Integer.parseInt(strength.getText())));
+		if (strengthProficiency.isSelected()) {
+			strengthSave.setText(modifier(Integer.parseInt(strength.getText())));
+		} else {
+			strengthSave.setText(modifier(Integer.parseInt(strength.getText())));
+		}
+		dexterity.setText("" + rollDice());
+		dexterityBonus.setText(modifier(Integer.parseInt(dexterity.getText())));
+		if (dexterityProficiency.isSelected()) {
+			dexteritySave.setText(modifier(Integer.parseInt(dexterity.getText())));
+		} else {
+			dexteritySave.setText(modifier(Integer.parseInt(dexterity.getText())));
+		}
+		constitution.setText("" + rollDice());
+		constitutionBonus.setText(modifier(Integer.parseInt(constitution.getText())));
+		if (constitutionProficiency.isSelected()) {
+			constitutionSave.setText(modifier(Integer.parseInt(constitution.getText())));
+		} else {
+			constitutionSave.setText(modifier(Integer.parseInt(constitution.getText())));
+		}
+		intelligence.setText("" + rollDice());
+		intelligenceBonus.setText(modifier(Integer.parseInt(intelligence.getText())));
+		if (intelligenceProficiency.isSelected()) {
+			intelligenceSave.setText(modifier(Integer.parseInt(intelligence.getText())));
+		} else {
+			intelligenceSave.setText(modifier(Integer.parseInt(intelligence.getText())));
+		}
+		wisdom.setText("" + rollDice());
+		wisdomBonus.setText(modifier(Integer.parseInt(wisdom.getText())));
+		if (wisdomProficiency.isSelected()) {
+			wisdomSave.setText(modifier(Integer.parseInt(wisdom.getText())));
+		} else {
+			wisdomSave.setText(modifier(Integer.parseInt(wisdom.getText())));
+		}
+		charisma.setText("" + rollDice());
+		charismaBonus.setText(modifier(Integer.parseInt(charisma.getText())));
+		if (charismaProficiency.isSelected()) {
+			charismaSave.setText(modifier(Integer.parseInt(charisma.getText())));
+		} else {
+			charismaSave.setText(modifier(Integer.parseInt(charisma.getText())));
+		}
+		
 		characterName.setText(panel1.getCharacterName().getText());
 		classes.setSelectedIndex(panel1.getClassList().getSelectedIndex());
 		archetypes.setSelectedIndex(panel1.getArchetypeList().getSelectedIndex());
@@ -919,6 +1156,7 @@ public class Panel2 extends JPanel {
 		races.setSelectedIndex(panel1.getRaceList().getSelectedIndex());
 		alignment.setSelectedIndex(panel1.getAlignmentList().getSelectedIndex());
 		speed.setText(app.getRaces().get(races.getSelectedIndex()).getSpeed() + " Feet");
+		initiative.setText(dexterityBonus.getText());
 		setupLevel();
 		
 		description.setText(app.getRaces().get(races.getSelectedIndex()).getDescription());
@@ -927,7 +1165,80 @@ public class Panel2 extends JPanel {
 		weight.setText(app.getRaces().get(races.getSelectedIndex()).getWeight());
 		book.setText(app.getRaces().get(races.getSelectedIndex()).getBook());
 	}
-	public void setupLevel() {
+	private int rollDice() {
+		int roll = 0;
+		Random rand = new Random();
+		int a = rand.nextInt(6) + 1;
+		int b = rand.nextInt(6) + 1;
+		int c = rand.nextInt(6) + 1;
+		int d = rand.nextInt(6) + 1;
+		int no = a;
+		if (no > b) {
+			no = b;
+		}
+		if (no > c) {
+			no = c;
+		}
+		if (no > d) {
+			no = d;
+		}
+		roll = a + b + c + d;
+		roll = roll - no;
+		return roll;
+	}
+	private String modifier(int num) {
+		String mod = "";
+		if (num == 0 || num == 1) {
+			mod = "- 5";
+		}
+		if (num == 2 || num == 3) {
+			mod = "- 4";
+		}
+		if (num == 4 || num == 5) {
+			mod = "- 3";
+		}
+		if (num == 6 || num == 7) {
+			mod = "- 2";
+		}
+		if (num == 8 || num == 9) {
+			mod = "- 1";
+		}
+		if (num == 10 || num == 11) {
+			mod = "+ 0";
+		}
+		if (num == 12 || num == 13) {
+			mod = "+ 1";
+		}
+		if (num == 14 || num == 15) {
+			mod = "+ 2";
+		}
+		if (num == 16 || num == 17) {
+			mod = "+ 3";
+		}
+		if (num == 18 || num == 19) {
+			mod = "+ 4";
+		}
+		if (num == 20 || num == 21) {
+			mod = "+ 5";
+		}
+		if (num == 22 || num == 23) {
+			mod = "+ 6";
+		}
+		if (num == 24 || num == 25) {
+			mod = "+ 7";
+		}
+		if (num == 26 || num == 27) {
+			mod = "+ 8";
+		}
+		if (num == 28 || num == 29) {
+			mod = "+ 9";
+		}
+		if (num >= 30) {
+			mod = "+ 10";
+		}
+		return mod;
+	}
+	private void setupLevel() {
 		int xpnum = Integer.parseInt(xp.getText());
 		int lev = 0;
 		if (xpnum < 300) {
@@ -1151,9 +1462,14 @@ public class Panel2 extends JPanel {
 		persuasionLabel.setVisible(false);
 		persuasionProficiency.setVisible(false);
 		persuasion.setVisible(false);
-		
+		strengthSaveLabel.setVisible(false);
+		dexteritySaveLabel.setVisible(false);
+		constitutionSaveLabel.setVisible(false);
+		intelligenceSaveLabel.setVisible(false);
+		wisdomSaveLabel.setVisible(false);
+		charismaSaveLabel.setVisible(false);
+		featsScroll.setVisible(false);
 		spellsLabel.setVisible(false);
-		featsLabel.setVisible(false);
 	}
 	private void activateStats() {
 		characterNameLabel.setVisible(true);
@@ -1282,6 +1598,12 @@ public class Panel2 extends JPanel {
 		persuasionLabel.setVisible(true);
 		persuasionProficiency.setVisible(true);
 		persuasion.setVisible(true);
+		strengthSaveLabel.setVisible(true);
+		dexteritySaveLabel.setVisible(true);
+		constitutionSaveLabel.setVisible(true);
+		intelligenceSaveLabel.setVisible(true);
+		wisdomSaveLabel.setVisible(true);
+		charismaSaveLabel.setVisible(true);
 	}
 	private void activateInfo() {
 		descriptionLabel.setVisible(true);
@@ -1297,7 +1619,7 @@ public class Panel2 extends JPanel {
 		book.setVisible(true);
 	}
 	private void activateFeats() {
-		featsLabel.setVisible(true);
+		featsScroll.setVisible(true);
 	}
 	private void activateSpells() {
 		spellsLabel.setVisible(true);
