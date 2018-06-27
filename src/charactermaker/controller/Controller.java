@@ -53,7 +53,11 @@ public class Controller {
 		races.add(new Aasimar_Protector());
 		races.add(new Aasimar_Scourge());
 		races.add(new Aasimar_Variant());
+		races.add(new Aetherborn());
+		races.add(new Aven_Hawk());
+		races.add(new Aven_Ibis());
 		races.add(new Bugbear());
+		races.add(new Centaur());
 		races.add(new Changeling());
 		races.add(new Dragonborn());
 		races.add(new Dwarf_Gray());
@@ -71,6 +75,8 @@ public class Controller {
 		races.add(new Genasi_Earth());
 		races.add(new Genasi_Fire());
 		races.add(new Genasi_Water());
+		races.add(new Gith_Yanki());
+		races.add(new Gith_Zerai());
 		races.add(new Gnome_Deep());
 		races.add(new Gnome_Forest());
 		races.add(new Gnome_Rock());
@@ -93,6 +99,7 @@ public class Controller {
 		races.add(new Human_Variant());
 		races.add(new Kender());
 		races.add(new Kenku());
+		races.add(new Khenra());
 		races.add(new Kobold());
 		races.add(new Kor());
 		races.add(new Lizardfolk());
@@ -100,7 +107,9 @@ public class Controller {
 		races.add(new Merfolk_Water());
 		races.add(new Merfolk_Wind());
 		races.add(new Minotaur());
+		races.add(new Naga());
 		races.add(new Orc());
+		races.add(new Revenant());
 		races.add(new Shifter_Beasthide());
 		races.add(new Shifter_Cliffwalk());
 		races.add(new Shifter_Longstride());
@@ -114,6 +123,7 @@ public class Controller {
 		races.add(new Tortle());
 		races.add(new Triton());
 		races.add(new Vampire());
+		races.add(new Vedalken());
 		races.add(new Warforged());
 		races.add(new YuanTiPureblood());
 		backgrounds = new ArrayList<Backgrounds>();
